@@ -6,6 +6,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 
 	this.tapCounter = 0;
 	this.clickCounter = 0;
+	this.amountOfTapsToEnd = 5;
 
 
 	this.domElement = ( domElement !== undefined ) ? domElement : document;
@@ -83,7 +84,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 
 		event.preventDefault();
 		event.stopPropagation();
-		if (this.clickCounter >= 5 ) {
+		if (this.clickCounter >= this.amountOfTapsToEnd ) {
             this.endTheGame = true;
         }
 		else {
@@ -113,7 +114,7 @@ THREE.FirstPersonControls = function ( object, domElement ) {
 	};
 
 	this.onTouchDown = function ( event ) {
-        if (this.tapCounter >= 5 ) {
+        if (this.tapCounter >= this.amountOfTapsToEnd ) {
             this.endTheGame = true;
         }
 		else {
